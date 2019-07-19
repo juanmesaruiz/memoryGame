@@ -6,10 +6,9 @@ import thunk from 'redux-thunk'
 
 import rootReducer from './reducers'
 
-const store = createStore(
-  rootReducer,
-  applyMiddleware(thunk)
-);
+import configureStore from './store';
+
+const {store} = configureStore();
 
 render(
   <Provider store={store}>
