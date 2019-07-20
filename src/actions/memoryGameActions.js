@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios'
 
 import {
   MEMORY_GAME_CARD_ACTION,
@@ -7,9 +7,9 @@ import {
   MEMORY_GAME_SET_GAME_CARDS,
   MEMORY_GAME_START_GAME,
   MEMORY_GAME_TOGGLE_DEMONSTRATION
-} from "./actionTypes";
+} from './actionTypes'
 
-import { API_ENDPOINT, API_KEY } from "../config/constants";
+import { API_ENDPOINT, API_KEY } from '../config/constants'
 
 /**
  * Generates an action that is fired when user clicks a card
@@ -21,8 +21,8 @@ export const memoryGameCardAction = idCard => {
     payload: {
       idCard
     }
-  };
-};
+  }
+}
 
 /**
  * Generates an action to clear redux state
@@ -31,8 +31,8 @@ export const memoryGameCardAction = idCard => {
 export const memoryGameClear = () => {
   return {
     type: MEMORY_GAME_CLEAR
-  };
-};
+  }
+}
 
 /**
  * Generates an action to fetch data card
@@ -42,30 +42,20 @@ export const memoryGameFetchCard = idHsCard => {
   const instance = axios.create({
     baseURL: API_ENDPOINT,
     timeout: 10000,
-    headers: { "X-RapidAPI-Key": API_KEY }
-  });
+    headers: { 'X-RapidAPI-Key': API_KEY }
+  })
 
-  return function(dispatch) {
+  return function (dispatch) {
     instance.get(idHsCard).then(response => {
       return dispatch({
         type: MEMORY_GAME_FETCH_CARD,
         payload: {
           data: response.data[0]
         }
-      });
-    });
-  };
-};
-
-/**
- * Generates an action to toggle demonstration value
- *
- */
-export const memoryGameToggleDemonstration = () => {
-  return {
-    type: MEMORY_GAME_TOGGLE_DEMONSTRATION
-  };
-};
+      })
+    })
+  }
+}
 
 /**
  * Generates an action to set game cards in game
@@ -77,8 +67,8 @@ export const memoryGameSetGameCards = gameCards => {
     payload: {
       gameCards
     }
-  };
-};
+  }
+}
 
 /**
  * Generate an action to start the game
@@ -87,5 +77,15 @@ export const memoryGameSetGameCards = gameCards => {
 export const memoryGameStartGame = () => {
   return {
     type: MEMORY_GAME_START_GAME
-  };
-};
+  }
+}
+
+/**
+ * Generates an action to toggle demonstration value
+ *
+ */
+export const memoryGameToggleDemonstration = () => {
+  return {
+    type: MEMORY_GAME_TOGGLE_DEMONSTRATION
+  }
+}
