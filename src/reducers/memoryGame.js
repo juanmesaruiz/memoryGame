@@ -1,28 +1,27 @@
 import cloneDeep from "lodash/cloneDeep";
 
 import {
-  MEMORY_GAME_ADD_MOVEMENT,
   MEMORY_GAME_CARD_ACTION,
   MEMORY_GAME_CLEAR,
+  MEMORY_GAME_FETCH_CARD,
   MEMORY_GAME_SET_GAME_CARDS,
-  MEMORY_GAME_START_GAME
+  MEMORY_GAME_START_GAME,
+  MEMORY_GAME_TOGGLE_DEMONSTRATION
 } from "../actions/actionTypes";
 import { getRandom } from "../helpers/randomHelper";
 
 const defaultState = {
   bestScore: 0,
   cpuCardSequence: [],
-  gameCards: 4,
+  gameCards: 6,
+  hsCardsData: [],
+  isGameDemonstration: false,
   isGameRunning: false,
   userCardSequence: []
 };
 
 export default function(state = defaultState, action) {
   switch (action.type) {
-    case MEMORY_GAME_ADD_MOVEMENT: {
-      return defaultState;
-    }
-
     case MEMORY_GAME_CARD_ACTION: {
       const { idCard } = action.payload;
       const newState = cloneDeep(state);
@@ -47,6 +46,7 @@ export default function(state = defaultState, action) {
             getRandom(gameCards)
           ];
           newState.userCardSequence = [];
+          newState.isGameDemonstration = true;
         }
         return newState;
       }
@@ -62,6 +62,14 @@ export default function(state = defaultState, action) {
       return defaultState;
     }
 
+    case MEMORY_GAME_FETCH_CARD: {
+      const { data } = action.payload;
+      const newState = cloneDeep(state);
+
+      newState.hsCardsData = [...state.hsCardsData, data];
+      return newState;
+    }
+
     case MEMORY_GAME_SET_GAME_CARDS: {
       const { gameCards } = action.payload;
       const newState = cloneDeep(state);
@@ -73,12 +81,19 @@ export default function(state = defaultState, action) {
     case MEMORY_GAME_START_GAME: {
       const newState = cloneDeep(state);
       const gameCards = newState.gameCards;
+      newState.isGameDemonstration = true;
       newState.isGameRunning = true;
       newState.cpuCardSequence = [
         ...newState.cpuCardSequence,
         getRandom(gameCards)
       ];
-      console.log(newState.cpuCardSequence);
+      return newState;
+    }
+
+    case MEMORY_GAME_TOGGLE_DEMONSTRATION: {
+      const newState = cloneDeep(state);
+      newState.isGameDemonstration = !newState.isGameDemonstration;
+
       return newState;
     }
     default:

@@ -1,16 +1,16 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
+import React from "react";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
 
-import MemoryGame from './app/memoryGame'
+import MemoryGame from "./app/memoryGame";
 
-import configureStore from './store'
+import configureStore from "./store";
 
-const { store } = configureStore()
+const { store } = configureStore();
 
 render(
   <Provider store={store}>
     <MemoryGame />
   </Provider>,
-  document.getElementById('root')
-)
+  document.getElementById("root")
+);

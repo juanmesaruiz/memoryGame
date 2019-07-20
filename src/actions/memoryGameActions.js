@@ -1,9 +1,15 @@
+import axios from "axios";
+
 import {
   MEMORY_GAME_CARD_ACTION,
   MEMORY_GAME_CLEAR,
+  MEMORY_GAME_FETCH_CARD,
   MEMORY_GAME_SET_GAME_CARDS,
-  MEMORY_GAME_START_GAME
-} from './actionTypes'
+  MEMORY_GAME_START_GAME,
+  MEMORY_GAME_TOGGLE_DEMONSTRATION
+} from "./actionTypes";
+
+import { API_ENDPOINT, API_KEY } from "../config/constants";
 
 /**
  * Generates an action that is fired when user clicks a card
@@ -15,7 +21,7 @@ export const memoryGameCardAction = idCard => {
     payload: {
       idCard
     }
-  }
+  };
 };
 
 /**
@@ -25,7 +31,40 @@ export const memoryGameCardAction = idCard => {
 export const memoryGameClear = () => {
   return {
     type: MEMORY_GAME_CLEAR
-  }
+  };
+};
+
+/**
+ * Generates an action to fetch data card
+ *
+ */
+export const memoryGameFetchCard = idHsCard => {
+  const instance = axios.create({
+    baseURL: API_ENDPOINT,
+    timeout: 10000,
+    headers: { "X-RapidAPI-Key": API_KEY }
+  });
+
+  return function(dispatch) {
+    instance.get(idHsCard).then(response => {
+      return dispatch({
+        type: MEMORY_GAME_FETCH_CARD,
+        payload: {
+          data: response.data[0]
+        }
+      });
+    });
+  };
+};
+
+/**
+ * Generates an action to toggle demonstration value
+ *
+ */
+export const memoryGameToggleDemonstration = () => {
+  return {
+    type: MEMORY_GAME_TOGGLE_DEMONSTRATION
+  };
 };
 
 /**
@@ -35,10 +74,10 @@ export const memoryGameClear = () => {
 export const memoryGameSetGameCards = gameCards => {
   return {
     type: MEMORY_GAME_SET_GAME_CARDS,
-    payload:{
+    payload: {
       gameCards
     }
-  }
+  };
 };
 
 /**
@@ -47,6 +86,6 @@ export const memoryGameSetGameCards = gameCards => {
  */
 export const memoryGameStartGame = () => {
   return {
-    type: MEMORY_GAME_START_GAME,
-  }
+    type: MEMORY_GAME_START_GAME
+  };
 };
