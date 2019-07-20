@@ -6,6 +6,7 @@ import {
   memoryGameCardAction,
   memoryGameFetchCard
 } from "../actions/memoryGameActions";
+
 import {
   getMemoryGameHsCardsData,
   getMemoryGameIsGameDemonstration,
@@ -26,7 +27,6 @@ const MemoryGameCard = props => {
   } = props;
 
   const thisCardData = hsCardsData.find(hsCard => hsCard.cardId === idHsCard);
-  console.log(thisCardData);
 
   useEffect(() => {
     if (!hsCardsData.find(hsCard => hsCard.cardId === idHsCard)) {
@@ -51,7 +51,7 @@ const MemoryGameCard = props => {
   const nameImg = get(thisCardData, "name", null);
 
   const customClasses = `${isThisActiveCard ? "--active" : ""} ${
-    isGameDemonstration || !gameRunning ? "--demonstration" : ""
+    isGameDemonstration || !gameRunning ? "--disabled" : ""
   }`;
 
   return (

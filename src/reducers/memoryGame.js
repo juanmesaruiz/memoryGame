@@ -54,7 +54,8 @@ export default function(state = defaultState, action) {
       return {
         ...defaultState,
         bestScore: newState.bestScore,
-        gameCards: newState.gameCards
+        gameCards: newState.gameCards,
+        hsCardsData: newState.hsCardsData,
       };
     }
 

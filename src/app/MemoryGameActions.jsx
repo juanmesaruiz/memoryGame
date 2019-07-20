@@ -34,7 +34,7 @@ const MemoryGameActions = props => {
         disabled={gameRunning}
       >
         {defaultSelectValues.map(val => (
-          <option>{val}</option>
+          <option key={val}>{val}</option>
         ))}
       </select>
     </>

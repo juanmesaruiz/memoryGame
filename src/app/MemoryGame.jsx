@@ -64,6 +64,7 @@ const MemoryGame = props => {
             activeCard={activeCard}
             idHsCard={arrayHSCards[i].idHsCard}
             id={i + 1}
+            key={arrayHSCards[i].idHsCard}
           />
         ))}
       </section>
