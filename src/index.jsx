@@ -1,19 +1,16 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import thunk from 'redux-thunk'
 
-import rootReducer from './reducers'
+import MemoryGame from './app/memoryGame'
 
-import configureStore from './store';
+import configureStore from './store'
 
-const {store} = configureStore();
+const { store } = configureStore()
 
 render(
   <Provider store={store}>
-    {/* ADD YOUR COMPONENT HERE */}
-    <div>Sequence memory game</div>
+    <MemoryGame />
   </Provider>,
   document.getElementById('root')
-);
+)

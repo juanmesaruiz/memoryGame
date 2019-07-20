@@ -62,3 +62,6 @@ typings/
 
 # Builds
 /build
+
+#IDE's
+.idea

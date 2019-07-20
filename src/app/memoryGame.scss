@@ -1,0 +1,16 @@
+.memoryGame {
+  .card {
+    display: inline-block;
+    height: 50px;
+    background-color: purple;
+    border: 2px solid black;
+    margin: 0 15px;
+    cursor: pointer;
+    width: 50px;
+    text-align: center;
+
+    &:hover {
+      background-color: rebeccapurple;
+    }
+  }
+}
