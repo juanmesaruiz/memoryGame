@@ -51,7 +51,7 @@ const MemoryGameCard = props => {
   const nameImg = get(thisCardData, "name", null);
 
   const customClasses = `${isThisActiveCard ? "--active" : ""} ${
-    isGameDemonstration ? "--demonstration" : ""
+    isGameDemonstration || !gameRunning ? "--demonstration" : ""
   }`;
 
   return (
