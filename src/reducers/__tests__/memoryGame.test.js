@@ -8,7 +8,8 @@ import {
   MEMORY_GAME_FETCH_CARD,
   MEMORY_GAME_SET_GAME_CARDS,
   MEMORY_GAME_START_GAME,
-  MEMORY_GAME_TOGGLE_DEMONSTRATION
+  MEMORY_GAME_TOGGLE_DEMONSTRATION,
+  MEMORY_GAME_TOGGLE_GOLD_MODE
 } from "../../actions/actionTypes";
 
 import { getRandom } from "../../helpers/randomHelper";
@@ -22,6 +23,7 @@ describe("memoryGame reducer", () => {
     gameCards: 4,
     hsCardsData: [],
     isGameDemonstration: false,
+    isGoldMode: false,
     isGameRunning: false,
     userCardSequence: []
   };
@@ -168,6 +170,16 @@ describe("memoryGame reducer", () => {
     };
     const expectedState = cloneDeep(defaultState);
     expectedState.isGameDemonstration = !expectedState.isGameDemonstration;
+
+    expect(reducer(defaultState, action)).toEqual(expectedState);
+  });
+
+  it("case with MEMORY_GAME_TOGGLE_DEMONSTRATION", () => {
+    const action = {
+      type: MEMORY_GAME_TOGGLE_GOLD_MODE
+    };
+    const expectedState = cloneDeep(defaultState);
+    expectedState.isGoldMode = !expectedState.isGoldMode;
 
     expect(reducer(defaultState, action)).toEqual(expectedState);
   });

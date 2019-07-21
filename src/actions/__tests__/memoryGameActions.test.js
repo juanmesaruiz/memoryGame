@@ -8,16 +8,18 @@ import {
   MEMORY_GAME_FETCH_CARD,
   MEMORY_GAME_SET_GAME_CARDS,
   MEMORY_GAME_START_GAME,
-  MEMORY_GAME_TOGGLE_DEMONSTRATION
+  MEMORY_GAME_TOGGLE_DEMONSTRATION,
+  MEMORY_GAME_TOGGLE_GOLD_MODE
 } from "../actionTypes";
 
 import {
   memoryGameCardAction,
   memoryGameClear,
   memoryGameFetchCard,
-  memoryGameToggleDemonstration,
   memoryGameSetGameCards,
-  memoryGameStartGame
+  memoryGameStartGame,
+  memoryGameToggleDemonstration,
+  memoryGameToggleGoldMode
 } from "../memoryGameActions";
 
 import { API_ENDPOINT } from "../../config/constants";
@@ -78,14 +80,6 @@ describe("Memory Game action creators:", () => {
     expect(actions[0]).toEqual(expected);
   });
 
-  it("memoryGameToggleDemonstration", () => {
-    const expected = {
-      type: MEMORY_GAME_TOGGLE_DEMONSTRATION
-    };
-    const actual = memoryGameToggleDemonstration();
-    expect(actual).toEqual(expected);
-  });
-
   it("memoryGameSetGameCards", () => {
     const gameCards = "gameCards";
     const expected = {
@@ -103,6 +97,22 @@ describe("Memory Game action creators:", () => {
       type: MEMORY_GAME_START_GAME
     };
     const actual = memoryGameStartGame();
+    expect(actual).toEqual(expected);
+  });
+
+  it("memoryGameToggleDemonstration", () => {
+    const expected = {
+      type: MEMORY_GAME_TOGGLE_DEMONSTRATION
+    };
+    const actual = memoryGameToggleDemonstration();
+    expect(actual).toEqual(expected);
+  });
+
+  it("memoryGameToggleGoldMode", () => {
+    const expected = {
+      type: MEMORY_GAME_TOGGLE_GOLD_MODE
+    };
+    const actual = memoryGameToggleGoldMode();
     expect(actual).toEqual(expected);
   });
 });

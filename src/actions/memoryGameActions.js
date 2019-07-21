@@ -97,7 +97,7 @@ export const memoryGameToggleDemonstration = () => {
  * Generates an action to toggle gold mode
  *
  */
-export const memoryToggleGoldMode = () => {
+export const memoryGameToggleGoldMode = () => {
   return {
     type: MEMORY_GAME_TOGGLE_GOLD_MODE
   };

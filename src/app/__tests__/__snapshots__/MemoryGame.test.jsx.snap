@@ -28,35 +28,61 @@ exports[`MemoryGame test suite Snapshot matchs 1`] = `
     <section
       class="memoryGame-action"
     >
-      <button>
+      <button
+        class="memoryGame-action-startButton"
+      >
         Start game
       </button>
-      <select
-        aria-label="memoryGame-action-select"
+      <div>
+        <label>
+          Number of cards:
+        </label>
+        <select
+          aria-label="memoryGame-action-select"
+          class="memoryGame-action-select"
+        >
+          <option>
+            2
+          </option>
+          <option>
+            3
+          </option>
+          <option>
+            4
+          </option>
+          <option>
+            5
+          </option>
+          <option>
+            6
+          </option>
+          <option>
+            7
+          </option>
+          <option>
+            8
+          </option>
+        </select>
+      </div>
+      <div>
+        <button
+          class="memoryGame-action-goldButton"
+        >
+          Gold Mode
+        </button>
+      </div>
+      <div
+        class="memoryGame-score"
       >
-        <option>
+        <p>
+          Level: 
           2
-        </option>
-        <option>
-          3
-        </option>
-        <option>
-          4
-        </option>
-        <option>
-          5
-        </option>
-        <option>
-          6
-        </option>
-      </select>
-      <span>
-        Best score: 
-      </span>
-      <span>
-        Level: 
-        2
-      </span>
+        </p>
+        <p>
+          Best score: 
+          <b />
+        </p>
+      </div>
     </section>
   </article>
 </div>

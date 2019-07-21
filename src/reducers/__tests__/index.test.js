@@ -4,7 +4,8 @@ import {
   getMemoryGameGameCards,
   getMemoryGameHsCardsData,
   getMemoryGameIsGameDemonstration,
-  getMemoryGameIsGameRunning
+  getMemoryGameIsGameRunning,
+  getMemoryGameIsGoldMode
 } from "../index";
 
 const defaultState = {
@@ -14,7 +15,8 @@ const defaultState = {
     gameCards: [],
     hsCardsData: [],
     isGameDemonstration: false,
-    isGameRunning: false
+    isGameRunning: false,
+    isGoldMode: false
   }
 };
 
@@ -46,6 +48,12 @@ describe("MemoryGame test suite", () => {
   });
   it("getMemoryGameIsGameRunning", () => {
     expect(getMemoryGameIsGameRunning(defaultState)).toBe(
+      defaultState.memoryGame.isGameRunning
+    );
+  });
+
+  it("getMemoryGameIsGoldMode", () => {
+    expect(getMemoryGameIsGoldMode(defaultState)).toBe(
       defaultState.memoryGame.isGameRunning
     );
   });

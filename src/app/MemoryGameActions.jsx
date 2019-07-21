@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import {
   memoryGameSetGameCards,
-  memoryToggleGoldMode,
+  memoryGameToggleGoldMode,
   memoryGameStartGame
 } from "../actions/memoryGameActions";
 import {
@@ -18,13 +18,13 @@ const MemoryGameActions = props => {
     isGameRunning,
     gameCards,
     memoryGameSetGameCards,
-    memoryToggleGoldMode,
+    memoryGameToggleGoldMode,
     memoryGameStartGame
   } = props;
 
+  const handleGoldCheckBox = () => memoryGameToggleGoldMode();
   const handleSelectGameCards = e => memoryGameSetGameCards(e.target.value);
   const handleStartGame = () => memoryGameStartGame();
-  const handleGoldCheckBox = () => memoryToggleGoldMode();
 
   return (
     <>
@@ -73,6 +73,6 @@ export default connect(
   {
     memoryGameSetGameCards,
     memoryGameStartGame,
-    memoryToggleGoldMode
+    memoryGameToggleGoldMode
   }
 )(MemoryGameActions);

@@ -10,7 +10,8 @@ import {
 
 import {
   memoryGameSetGameCards,
-  memoryGameStartGame
+  memoryGameStartGame,
+  memoryGameToggleGoldMode
 } from "../../actions/memoryGameActions";
 
 import store from "../../store/__mocks__/mockStore";
@@ -35,9 +36,11 @@ const setup = () => {
   const utils = render(getComponent());
   const startGameButton = utils.getByText("Start game");
   const setCardsButton = utils.getByLabelText("memoryGame-action-select");
+  const goldButton = utils.getByText("Gold Mode");
   return {
     startGameButton,
     setCardsButton,
+    goldButton,
     ...utils
   };
 };
@@ -51,6 +54,9 @@ describe("MemoryGameAction test suite", () => {
     });
     memoryGameStartGame.mockReturnValue({
       type: "memoryGameStartGame"
+    });
+    memoryGameToggleGoldMode.mockReturnValue({
+      type: "memoryGameToggleGoldMode"
     });
   });
 
@@ -80,5 +86,12 @@ describe("MemoryGameAction test suite", () => {
     });
     expect(memoryGameSetGameCards).toHaveBeenCalledTimes(1);
     expect(memoryGameSetGameCards).toHaveBeenCalledWith(mockReturnSetGameCards);
+  });
+
+  it("Click on gold mode button", () => {
+    const { goldButton } = setup();
+
+    fireEvent.click(goldButton);
+    expect(memoryGameToggleGoldMode).toHaveBeenCalledTimes(1);
   });
 });
