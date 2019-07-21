@@ -43,3 +43,8 @@ Compress your solution (without the `/node_modules` and `/build` folders) and se
 * To create the production bundle just run `yarn build`
 
 If for your final solution we need to run something else (like `yarn test` for unit testing for example) please add it here :)
+
+* Run yarn test to run all the test on the project
+* Run yarn test:cover to run test and get the code coverage
+
+**Don't forget to use the gold button :P**
