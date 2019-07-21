@@ -1,16 +1,16 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react'
+import { connect } from 'react-redux'
 
 import {
   memoryGameSetGameCards,
   memoryGameStartGame
-} from "../actions/memoryGameActions";
+} from '../actions/memoryGameActions'
 import {
   getMemoryGameIsGameRunning,
   getMemoryGameGameCards
-} from "../reducers";
+} from '../reducers'
 
-import { defaultSelectValues } from "../config/constants";
+import { defaultSelectValues } from '../config/constants'
 
 const MemoryGameActions = props => {
   const {
@@ -18,16 +18,16 @@ const MemoryGameActions = props => {
     gameCards,
     memoryGameSetGameCards,
     memoryGameStartGame
-  } = props;
+  } = props
 
-  const handleSelectGameCards = e => memoryGameSetGameCards(e.target.value);
-  const handleStartGame = () => memoryGameStartGame();
+  const handleSelectGameCards = e => memoryGameSetGameCards(e.target.value)
+  const handleStartGame = () => memoryGameStartGame()
 
   return (
     <>
       <button onClick={handleStartGame} disabled={gameRunning}>Start game</button>
       <select
-        aria-label="memoryGame-action-select"
+        aria-label='memoryGame-action-select'
         value={gameCards}
         onChange={handleSelectGameCards}
         disabled={gameRunning}
@@ -37,15 +37,15 @@ const MemoryGameActions = props => {
         ))}
       </select>
     </>
-  );
-};
+  )
+}
 
 const mapStateToProps = state => {
   return {
     gameRunning: getMemoryGameIsGameRunning(state),
     gameCards: getMemoryGameGameCards(state)
-  };
-};
+  }
+}
 
 export default connect(
   mapStateToProps,
@@ -53,4 +53,4 @@ export default connect(
     memoryGameSetGameCards,
     memoryGameStartGame
   }
-)(MemoryGameActions);
+)(MemoryGameActions)

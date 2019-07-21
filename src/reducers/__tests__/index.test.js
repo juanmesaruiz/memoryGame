@@ -4,8 +4,8 @@ import {
   getMemoryGameGameCards,
   getMemoryGameHsCardsData,
   getMemoryGameIsGameDemonstration,
-  getMemoryGameIsGameRunning,
-} from "../index";
+  getMemoryGameIsGameRunning
+} from '../index'
 
 const defaultState = {
   memoryGame: {
@@ -14,27 +14,27 @@ const defaultState = {
     gameCards: [],
     hsCardsData: [],
     isGameDemonstration: false,
-    isGameRunning: false,
+    isGameRunning: false
   }
-};
+}
 
 describe('MemoryGame test suite', () => {
   it('getMemoryGameBestScore', () => {
-    expect(getMemoryGameBestScore(defaultState)).toBe(defaultState.memoryGame.bestScore);
-  });
+    expect(getMemoryGameBestScore(defaultState)).toBe(defaultState.memoryGame.bestScore)
+  })
   it('getMemoryGameCpuCardSequence', () => {
-    expect(getMemoryGameCpuCardSequence(defaultState)).toBe(defaultState.memoryGame.cpuCardSequence);
-  });
+    expect(getMemoryGameCpuCardSequence(defaultState)).toBe(defaultState.memoryGame.cpuCardSequence)
+  })
   it('getMemoryGameGameCards', () => {
     expect(getMemoryGameGameCards(defaultState)).toBe(defaultState.memoryGame.gameCards)
-  });
+  })
   it('getMemoryGameHsCardsData', () => {
     expect(getMemoryGameHsCardsData(defaultState)).toBe(defaultState.memoryGame.hsCardsData)
-  });
+  })
   it('getMemoryGameIsGameDemonstration', () => {
     expect(getMemoryGameIsGameDemonstration(defaultState)).toBe(defaultState.memoryGame.isGameDemonstration)
-  });
+  })
   it('getMemoryGameIsGameRunning', () => {
     expect(getMemoryGameIsGameRunning(defaultState)).toBe(defaultState.memoryGame.isGameRunning)
-  });
-});
+  })
+})

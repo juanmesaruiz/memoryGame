@@ -23,29 +23,29 @@ const defaultState = {
 export default function (state = defaultState, action) {
   switch (action.type) {
     case MEMORY_GAME_CARD_ACTION: {
-      const { idCard } = action.payload;
-      const newState = cloneDeep(state);
+      const { idCard } = action.payload
+      const newState = cloneDeep(state)
 
-      newState.userCardSequence = [...newState.userCardSequence, idCard];
+      newState.userCardSequence = [...newState.userCardSequence, idCard]
 
-      const cpuCardSequenceLength = newState.cpuCardSequence.length;
-      const userCardSequenceLength = newState.userCardSequence.length;
-      const actualCpu = newState.cpuCardSequence[userCardSequenceLength - 1];
-      const actualUser = newState.userCardSequence[userCardSequenceLength - 1];
-      const isCorrect = actualCpu === actualUser;
+      const cpuCardSequenceLength = newState.cpuCardSequence.length
+      const userCardSequenceLength = newState.userCardSequence.length
+      const actualCpu = newState.cpuCardSequence[userCardSequenceLength - 1]
+      const actualUser = newState.userCardSequence[userCardSequenceLength - 1]
+      const isCorrect = actualCpu === actualUser
 
       if (isCorrect) {
         if (cpuCardSequenceLength === userCardSequenceLength) {
-          const gameCards = newState.gameCards;
+          const gameCards = newState.gameCards
           newState.bestScore =
             newState.bestScore > cpuCardSequenceLength
               ? newState.bestScore
-              : cpuCardSequenceLength;
+              : cpuCardSequenceLength
           newState.cpuCardSequence = [
             ...newState.cpuCardSequence,
             getRandom(gameCards)
-          ];
-          newState.userCardSequence = [];
+          ]
+          newState.userCardSequence = []
           newState.isGameDemonstration = true
         }
         return newState

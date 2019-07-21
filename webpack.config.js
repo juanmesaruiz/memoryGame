@@ -1,5 +1,5 @@
-const path = require('path');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: ['@babel/polyfill', './src/index.jsx'],
@@ -19,9 +19,9 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          "style-loader",
-          "css-loader",
-          "sass-loader"
+          'style-loader',
+          'css-loader',
+          'sass-loader'
         ]
       }
     ]
@@ -35,4 +35,4 @@ module.exports = {
       filename: 'index.html'
     })
   ]
-};
+}
