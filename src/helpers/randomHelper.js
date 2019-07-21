@@ -1,3 +1,5 @@
-export const getRandom = (max, min = 1) => {
-    return Math.floor(Math.random() * (max - min)) + min;
-};
+import { minNumberRandom } from '../config/constants'
+
+export const getRandom = (max, min = minNumberRandom) => {
+  return Math.floor(Math.random() * (max - min)) + min
+}
