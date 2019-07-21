@@ -8,7 +8,8 @@
   "license": "MIT",
   "private": true,
   "standard": {
-    "env": [ "jest" ]
+    "env": [ "jest" ],
+    "globals": [ "alert" ]
   },
   "scripts": {
     "start": "webpack-dev-server --mode development",

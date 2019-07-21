@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
+import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
 
 import {
   memoryGameClear,
   memoryGameToggleDemonstration
-} from "../actions/memoryGameActions";
+} from '../actions/memoryGameActions'
 
 import {
   getMemoryGameCpuCardSequence,
   getMemoryGameGameCards,
   getMemoryGameIsGameDemonstration
-} from "../reducers";
+} from '../reducers'
 
-import MemoryGameActions from "./MemoryGameActions";
-import MemoryGameCard from "./MemoryGameCard";
-import MemoryGameScore from "./MemoryGameScore";
+import MemoryGameActions from './MemoryGameActions'
+import MemoryGameCard from './MemoryGameCard'
+import MemoryGameScore from './MemoryGameScore'
 
-import { arrayHSCards } from "../config/constants";
+import { arrayHSCards } from '../config/constants'
 
-import "./memoryGame.scss";
+import './memoryGame.scss'
 
 const MemoryGame = props => {
-  const [activeCard, setActiveCard] = useState(null);
+  const [activeCard, setActiveCard] = useState(null)
 
   const {
     cpuCardSequence,
@@ -29,37 +29,37 @@ const MemoryGame = props => {
     isGameDemonstration,
     memoryGameClear,
     memoryGameToggleDemonstration
-  } = props;
+  } = props
 
   const finnishDemonstration = () => {
-    memoryGameToggleDemonstration();
-  };
+    memoryGameToggleDemonstration()
+  }
 
   useEffect(() => {
     if (isGameDemonstration) {
       setTimeout(() => {
         cpuCardSequence.forEach((el, i) => {
           setTimeout(() => {
-            setActiveCard(null);
-            setActiveCard(el);
-            if (i === cpuCardSequence.length - 1) finnishDemonstration();
-          }, 1250 * i);
-        });
-      }, 500);
+            setActiveCard(null)
+            setActiveCard(el)
+            if (i === cpuCardSequence.length - 1) finnishDemonstration()
+          }, 1250 * i)
+        })
+      }, 500)
     }
-  }, [isGameDemonstration]);
+  }, [isGameDemonstration])
 
   useEffect(() => {
     return () => {
-      memoryGameClear();
-    };
-  }, [memoryGameClear]);
+      memoryGameClear()
+    }
+  }, [memoryGameClear])
 
-  const actualCards = arrayHSCards.slice(0, gameCards);
+  const actualCards = arrayHSCards.slice(0, gameCards)
 
   return (
-    <article className="memoryGame">
-      <section className="memoryGame-cards">
+    <article className='memoryGame'>
+      <section className='memoryGame-cards'>
         {actualCards.map((element, i) => (
           <MemoryGameCard
             activeCard={activeCard}
@@ -69,23 +69,23 @@ const MemoryGame = props => {
           />
         ))}
       </section>
-      <section className="memoryGame-action">
+      <section className='memoryGame-action'>
         <MemoryGameActions />
         <MemoryGameScore />
       </section>
     </article>
-  );
-};
+  )
+}
 
 const mapStateToProps = state => {
   return {
     cpuCardSequence: getMemoryGameCpuCardSequence(state),
     gameCards: getMemoryGameGameCards(state),
     isGameDemonstration: getMemoryGameIsGameDemonstration(state)
-  };
-};
+  }
+}
 
 export default connect(
   mapStateToProps,
   { memoryGameClear, memoryGameToggleDemonstration }
-)(MemoryGame);
+)(MemoryGame)

@@ -1,17 +1,17 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react'
+import { connect } from 'react-redux'
 
 import {
   memoryGameSetGameCards,
   memoryGameToggleGoldMode,
   memoryGameStartGame
-} from "../actions/memoryGameActions";
+} from '../actions/memoryGameActions'
 import {
   getMemoryGameIsGameRunning,
   getMemoryGameGameCards
-} from "../reducers";
+} from '../reducers'
 
-import { defaultSelectValues } from "../config/constants";
+import { defaultSelectValues } from '../config/constants'
 
 const MemoryGameActions = props => {
   const {
@@ -20,16 +20,16 @@ const MemoryGameActions = props => {
     memoryGameSetGameCards,
     memoryGameToggleGoldMode,
     memoryGameStartGame
-  } = props;
+  } = props
 
-  const handleGoldCheckBox = () => memoryGameToggleGoldMode();
-  const handleSelectGameCards = e => memoryGameSetGameCards(e.target.value);
-  const handleStartGame = () => memoryGameStartGame();
+  const handleGoldCheckBox = () => memoryGameToggleGoldMode()
+  const handleSelectGameCards = e => memoryGameSetGameCards(e.target.value)
+  const handleStartGame = () => memoryGameStartGame()
 
   return (
     <>
       <button
-        className="memoryGame-action-startButton"
+        className='memoryGame-action-startButton'
         onClick={handleStartGame}
         disabled={isGameRunning}
       >
@@ -38,8 +38,8 @@ const MemoryGameActions = props => {
       <div>
         <label>Number of cards:</label>
         <select
-          className="memoryGame-action-select"
-          aria-label="memoryGame-action-select"
+          className='memoryGame-action-select'
+          aria-label='memoryGame-action-select'
           value={gameCards}
           onChange={handleSelectGameCards}
           disabled={isGameRunning}
@@ -51,22 +51,22 @@ const MemoryGameActions = props => {
       </div>
       <div>
         <button
-          className="memoryGame-action-goldButton"
+          className='memoryGame-action-goldButton'
           onClick={handleGoldCheckBox}
         >
           Gold Mode
         </button>
       </div>
     </>
-  );
-};
+  )
+}
 
 const mapStateToProps = state => {
   return {
     gameCards: getMemoryGameGameCards(state),
     isGameRunning: getMemoryGameIsGameRunning(state)
-  };
-};
+  }
+}
 
 export default connect(
   mapStateToProps,
@@ -75,4 +75,4 @@ export default connect(
     memoryGameStartGame,
     memoryGameToggleGoldMode
   }
-)(MemoryGameActions);
+)(MemoryGameActions)
