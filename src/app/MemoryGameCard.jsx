@@ -10,8 +10,9 @@ import {
 import {
   getMemoryGameHsCardsData,
   getMemoryGameIsGameDemonstration,
-  getMemoryGameIsGameRunning
-} from '../reducers'
+  getMemoryGameIsGameRunning,
+  getMemoryGameIsGoldMode
+} from "../reducers";
 
 const MemoryGameCard = props => {
   const [isThisActiveCard, setThisActiveCard] = useState(false)
@@ -19,6 +20,7 @@ const MemoryGameCard = props => {
     activeCard,
     isGameDemonstration,
     gameRunning,
+    goldMode,
     hsCardsData,
     id,
     idHsCard,
@@ -47,9 +49,9 @@ const MemoryGameCard = props => {
     if (gameRunning) memoryGameCardAction(id)
   }
 
-  const cardImg = get(thisCardData, 'img', null)
+  const imgPath = goldMode ? 'imgGold' : 'img';
+  const cardImg = get(thisCardData, imgPath, null)
   const nameImg = get(thisCardData, 'name', null)
-
   const customClasses = `${isThisActiveCard ? '--active' : ''} ${
     isGameDemonstration || !gameRunning ? '--disabled' : ''
   }`
@@ -68,6 +70,7 @@ const MemoryGameCard = props => {
 const mapStateToProps = state => {
   return {
     gameRunning: getMemoryGameIsGameRunning(state),
+    goldMode: getMemoryGameIsGoldMode(state),
     isGameDemonstration: getMemoryGameIsGameDemonstration(state),
     hsCardsData: getMemoryGameHsCardsData(state)
   }

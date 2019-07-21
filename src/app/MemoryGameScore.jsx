@@ -11,8 +11,8 @@ const MemoryGameScore = props => {
 
   return (
     <>
-      <span>Best score: {bestScore}</span>
-      <span>Level: {cpuCardSequence.length}</span>
+      <p>Best score: {bestScore}</p>
+      <p>Level: {cpuCardSequence.length}</p>
     </>
   )
 }

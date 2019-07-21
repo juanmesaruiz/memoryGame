@@ -12,7 +12,8 @@ export const getMemoryGameCpuCardSequence = state =>
 export const getMemoryGameGameCards = state => state.memoryGame.gameCards
 export const getMemoryGameHsCardsData = state => state.memoryGame.hsCardsData
 export const getMemoryGameIsGameDemonstration = state =>
-  state.memoryGame.isGameDemonstration
+  state.memoryGame.isGameDemonstration;
+export const getMemoryGameIsGoldMode = state => state.memoryGame.isGoldMode;
 export const getMemoryGameIsGameRunning = state =>
   state.memoryGame.isGameRunning
 

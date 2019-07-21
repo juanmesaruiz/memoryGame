@@ -4,10 +4,10 @@ import {
   MEMORY_GAME_CARD_ACTION,
   MEMORY_GAME_CLEAR,
   MEMORY_GAME_FETCH_CARD,
-  MEMORY_GAME_SET_GAME_CARDS,
+  MEMORY_GAME_SET_GAME_CARDS, MEMORY_GAME_SET_GOLD_MODE,
   MEMORY_GAME_START_GAME,
   MEMORY_GAME_TOGGLE_DEMONSTRATION
-} from '../actions/actionTypes'
+} from "../actions/actionTypes";
 import { getRandom } from '../helpers/randomHelper'
 
 const defaultState = {
@@ -17,6 +17,7 @@ const defaultState = {
   hsCardsData: [],
   isGameDemonstration: false,
   isGameRunning: false,
+  isGoldMode: false,
   userCardSequence: []
 }
 
@@ -75,6 +76,13 @@ export default function (state = defaultState, action) {
       const { gameCards } = action.payload
       const newState = cloneDeep(state)
       newState.gameCards = gameCards
+
+      return newState
+    }
+    case MEMORY_GAME_SET_GOLD_MODE: {
+      const { isGoldMode } = action.payload;
+      const newState = cloneDeep(state);
+      newState.isGoldMode = isGoldMode;
 
       return newState
     }

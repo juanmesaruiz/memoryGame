@@ -6,6 +6,7 @@ import {
   MEMORY_GAME_FETCH_CARD,
   MEMORY_GAME_SET_GAME_CARDS,
   MEMORY_GAME_START_GAME,
+  MEMORY_GAME_SET_GOLD_MODE,
   MEMORY_GAME_TOGGLE_DEMONSTRATION
 } from './actionTypes'
 
@@ -69,6 +70,19 @@ export const memoryGameSetGameCards = gameCards => {
     type: MEMORY_GAME_SET_GAME_CARDS,
     payload: {
       gameCards
+    }
+  }
+}
+
+/**
+ * Generates an action to set gold mode
+ *
+ */
+export const memorySetGoldMode = isGoldMode => {
+  return {
+    type: MEMORY_GAME_SET_GOLD_MODE,
+    payload: {
+      isGoldMode
     }
   }
 }

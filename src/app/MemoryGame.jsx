@@ -40,10 +40,10 @@ const MemoryGame = props => {
       setTimeout(() => {
         cpuCardSequence.forEach((el, i) => {
           setTimeout(() => {
-            setActiveCard(null)
-            setActiveCard(el)
-          }, 1250 * i)
-        }, finnishDemonstration())
+            setActiveCard(null);
+            setActiveCard(el);
+            if (i === cpuCardSequence.length -1) finnishDemonstration();
+          }, 1250 * i)})
       }, 500)
     }
   }, [isGameDemonstration])

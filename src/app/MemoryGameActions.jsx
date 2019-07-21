@@ -3,12 +3,13 @@ import { connect } from 'react-redux'
 
 import {
   memoryGameSetGameCards,
-  memoryGameStartGame
+  memorySetGoldMode,
+  memoryGameStartGame,
 } from '../actions/memoryGameActions'
 import {
   getMemoryGameIsGameRunning,
   getMemoryGameGameCards
-} from '../reducers'
+} from "../reducers";
 
 import { defaultSelectValues } from '../config/constants'
 
@@ -17,25 +18,38 @@ const MemoryGameActions = props => {
     gameRunning,
     gameCards,
     memoryGameSetGameCards,
+    memorySetGoldMode,
     memoryGameStartGame
-  } = props
+  } = props;
 
-  const handleSelectGameCards = e => memoryGameSetGameCards(e.target.value)
-  const handleStartGame = () => memoryGameStartGame()
+  const handleSelectGameCards = e => memoryGameSetGameCards(e.target.value);
+  const handleStartGame = () => memoryGameStartGame();
+  const handleGoldCheckBox = (e) => {
+    console.log(e.target.value);
+    console.log(e.checked);
+    memorySetGoldMode(e.target.value)
+  };
 
   return (
     <>
       <button onClick={handleStartGame} disabled={gameRunning}>Start game</button>
-      <select
-        aria-label='memoryGame-action-select'
-        value={gameCards}
-        onChange={handleSelectGameCards}
-        disabled={gameRunning}
-      >
-        {defaultSelectValues.map(val => (
-          <option key={val}>{val}</option>
-        ))}
-      </select>
+      <div>
+        <label>Select number of cards</label>
+        <select
+          aria-label='memoryGame-action-select'
+          value={gameCards}
+          onChange={handleSelectGameCards}
+          disabled={gameRunning}
+        >
+          {defaultSelectValues.map(val => (
+            <option key={val}>{val}</option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <label>Gold Mode</label>
+        <input type="checkbox" onClick={handleGoldCheckBox}/>
+      </div>
     </>
   )
 }
@@ -43,7 +57,7 @@ const MemoryGameActions = props => {
 const mapStateToProps = state => {
   return {
     gameRunning: getMemoryGameIsGameRunning(state),
-    gameCards: getMemoryGameGameCards(state)
+    gameCards: getMemoryGameGameCards(state),
   }
 }
 
@@ -51,6 +65,7 @@ export default connect(
   mapStateToProps,
   {
     memoryGameSetGameCards,
-    memoryGameStartGame
+    memoryGameStartGame,
+    memorySetGoldMode,
   }
 )(MemoryGameActions)
