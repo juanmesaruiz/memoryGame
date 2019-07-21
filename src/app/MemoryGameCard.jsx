@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
-import get from 'lodash/get'
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import get from "lodash/get";
 
 import {
   memoryGameCardAction,
   memoryGameFetchCard
-} from '../actions/memoryGameActions'
+} from "../actions/memoryGameActions";
 
 import {
   getMemoryGameHsCardsData,
@@ -15,68 +15,68 @@ import {
 } from "../reducers";
 
 const MemoryGameCard = props => {
-  const [isThisActiveCard, setThisActiveCard] = useState(false)
+  const [isThisActiveCard, setThisActiveCard] = useState(false);
   const {
     activeCard,
     isGameDemonstration,
-    gameRunning,
+    isGameRunning,
     goldMode,
     hsCardsData,
     id,
     idHsCard,
     memoryGameCardAction,
     memoryGameFetchCard
-  } = props
+  } = props;
 
-  const thisCardData = hsCardsData.find(hsCard => hsCard.cardId === idHsCard)
+  const thisCardData = hsCardsData.find(hsCard => hsCard.cardId === idHsCard);
 
   useEffect(() => {
     if (!hsCardsData.find(hsCard => hsCard.cardId === idHsCard)) {
-      memoryGameFetchCard(idHsCard)
+      memoryGameFetchCard(idHsCard);
     }
-  }, [idHsCard])
+  }, [idHsCard]);
 
   useEffect(() => {
     if (activeCard === id) {
-      setThisActiveCard(true)
+      setThisActiveCard(true);
       setTimeout(() => {
-        setThisActiveCard(false)
-      }, 500)
+        setThisActiveCard(false);
+      }, 500);
     }
-  }, [activeCard])
+  }, [activeCard]);
 
   const handleCardClick = () => {
-    if (gameRunning) memoryGameCardAction(id)
-  }
+    if (isGameRunning) memoryGameCardAction(id);
+  };
 
-  const imgPath = goldMode ? 'imgGold' : 'img';
-  const cardImg = get(thisCardData, imgPath, null)
-  const nameImg = get(thisCardData, 'name', null)
-  const customClasses = `${isThisActiveCard ? '--active' : ''} ${
-    isGameDemonstration || !gameRunning ? '--disabled' : ''
-  }`
+  const imgPath = goldMode ? "imgGold" : "img";
+  const cardImg = get(thisCardData, imgPath, null);
+  const nameImg = get(thisCardData, "name", null);
+  const customClasses = `${isThisActiveCard ? "--active" : ""} ${
+    isGameDemonstration || !isGameRunning ? "--disabled" : ""
+  }`;
 
   return (
     <div
       className={`memoryGame-card ${customClasses}`}
       onClick={handleCardClick}
     >
-      <div className='memoryGame-card-hover' />
-      <img className='memoryGame-image' alt={nameImg} src={cardImg} />
+      <div className="memoryGame-card-hover" />
+      <img className="memoryGame-image" alt={nameImg} src={cardImg} />
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = state => {
   return {
-    gameRunning: getMemoryGameIsGameRunning(state),
     goldMode: getMemoryGameIsGoldMode(state),
     isGameDemonstration: getMemoryGameIsGameDemonstration(state),
+    isGameRunning: getMemoryGameIsGameRunning(state),
     hsCardsData: getMemoryGameHsCardsData(state)
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   { memoryGameCardAction, memoryGameFetchCard }
-)(MemoryGameCard)
+)(MemoryGameCard);

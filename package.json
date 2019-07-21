@@ -17,9 +17,6 @@
     "test-cover": "yarn test --coverage --no-cache",
     "standard": "standard"
   },
-  "pre-commit": [
-    "standard"
-  ],
   "dependencies": {
     "axios": "^0.19.0",
     "css-loader": "^3.1.0",

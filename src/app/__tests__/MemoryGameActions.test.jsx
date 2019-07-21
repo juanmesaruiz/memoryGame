@@ -1,85 +1,84 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { cleanup, render, fireEvent } from '@testing-library/react'
-import { Provider } from 'react-redux'
+import React from "react";
+import ReactDOM from "react-dom";
+import { cleanup, render, fireEvent } from "@testing-library/react";
+import { Provider } from "react-redux";
 
 import {
   getMemoryGameIsGameRunning,
   getMemoryGameGameCards
-} from '../../reducers'
+} from "../../reducers";
 
 import {
   memoryGameSetGameCards,
   memoryGameStartGame
-} from '../../actions/memoryGameActions'
+} from "../../actions/memoryGameActions";
 
-import store from '../../store/__mocks__/mockStore'
+import store from "../../store/__mocks__/mockStore";
 
-import MemoryGameActions from '../MemoryGameActions'
+import MemoryGameActions from "../MemoryGameActions";
 
-jest.mock('../../reducers')
-jest.mock('../../actions/memoryGameActions')
+jest.mock("../../reducers");
+jest.mock("../../actions/memoryGameActions");
 
 const component = (
   <Provider store={store}>
     <MemoryGameActions />
   </Provider>
-)
+);
 
-const getComponent = () => component
+const getComponent = () => component;
 
-const mockReturnGameCards = 4
-const mockReturnSetGameCards = String(mockReturnGameCards + 1)
+const mockReturnGameCards = 4;
+const mockReturnSetGameCards = String(mockReturnGameCards + 1);
 
 const setup = () => {
-  const utils = render(getComponent())
-  const startGameButton = utils.getByText('Start game')
-  const setCardsButton = utils.getByLabelText('memoryGame-action-select')
+  const utils = render(getComponent());
+  const startGameButton = utils.getByText("Start game");
+  const setCardsButton = utils.getByLabelText("memoryGame-action-select");
   return {
     startGameButton,
     setCardsButton,
     ...utils
-  }
-}
+  };
+};
 
-describe('MemoryGameAction test suite', () => {
+describe("MemoryGameAction test suite", () => {
   beforeEach(() => {
-    getMemoryGameGameCards.mockReturnValue(mockReturnGameCards)
-    getMemoryGameIsGameRunning.mockReturnValue(false)
+    getMemoryGameGameCards.mockReturnValue(mockReturnGameCards);
+    getMemoryGameIsGameRunning.mockReturnValue(false);
     memoryGameSetGameCards.mockReturnValue({
-      type: 'memoryGameSetGameCards'
-    })
+      type: "memoryGameSetGameCards"
+    });
     memoryGameStartGame.mockReturnValue({
-      type: 'memoryGameStartGame'
-    })
-  })
+      type: "memoryGameStartGame"
+    });
+  });
 
   afterEach(() => {
-    jest.clearAllMocks()
-    cleanup()
-  })
+    jest.clearAllMocks();
+    cleanup();
+  });
 
-  it('Renders without crashing', () => {
-    const div = document.createElement('div')
-    ReactDOM.render(component, div)
-    ReactDOM.unmountComponentAtNode(div)
-  })
+  it("Renders without crashing", () => {
+    const div = document.createElement("div");
+    ReactDOM.render(component, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
 
-  it('Click on start game', () => {
-    const { startGameButton } = setup()
+  it("Click on start game", () => {
+    const { startGameButton } = setup();
 
-    fireEvent.click(startGameButton)
-    expect(memoryGameStartGame).toHaveBeenCalledTimes(1)
-  })
+    fireEvent.click(startGameButton);
+    expect(memoryGameStartGame).toHaveBeenCalledTimes(1);
+  });
 
-  it('Set new number of cards', () => {
-    const { setCardsButton } = setup()
+  it("Set new number of cards", () => {
+    const { setCardsButton } = setup();
 
     fireEvent.change(setCardsButton, {
-      target:
-        { value: mockReturnSetGameCards }
-    })
-    expect(memoryGameSetGameCards).toHaveBeenCalledTimes(1)
-    expect(memoryGameSetGameCards).toHaveBeenCalledWith(mockReturnSetGameCards)
-  })
-})
+      target: { value: mockReturnSetGameCards }
+    });
+    expect(memoryGameSetGameCards).toHaveBeenCalledTimes(1);
+    expect(memoryGameSetGameCards).toHaveBeenCalledWith(mockReturnSetGameCards);
+  });
+});
