@@ -22,7 +22,7 @@ export const memoryGameCardAction = idCard => {
       idCard
     }
   }
-}
+};
 
 /**
  * Generates an action to clear redux state
@@ -32,30 +32,33 @@ export const memoryGameClear = () => {
   return {
     type: MEMORY_GAME_CLEAR
   }
-}
+};
 
 /**
  * Generates an action to fetch data card
  *
  */
 export const memoryGameFetchCard = idHsCard => {
-  const instance = axios.create({
-    baseURL: API_ENDPOINT,
+  const url = API_ENDPOINT + idHsCard;
+  const config = {
+    method: 'get',
+    url: url,
+    headers: { 'X-RapidAPI-Key': API_KEY },
     timeout: 10000,
-    headers: { 'X-RapidAPI-Key': API_KEY }
-  })
+  };
 
-  return function (dispatch) {
-    instance.get(idHsCard).then(response => {
-      return dispatch({
-        type: MEMORY_GAME_FETCH_CARD,
-        payload: {
-          data: response.data[0]
-        }
-      })
-    })
+  return dispatch => {
+    return axios(config)
+      .then(response => {
+        dispatch({
+          type: MEMORY_GAME_FETCH_CARD,
+          payload: {
+            data: response.data[0]
+          }
+        })
+      });
   }
-}
+};
 
 /**
  * Generates an action to set game cards in game
@@ -68,7 +71,7 @@ export const memoryGameSetGameCards = gameCards => {
       gameCards
     }
   }
-}
+};
 
 /**
  * Generate an action to start the game
@@ -78,7 +81,7 @@ export const memoryGameStartGame = () => {
   return {
     type: MEMORY_GAME_START_GAME
   }
-}
+};
 
 /**
  * Generates an action to toggle demonstration value
@@ -88,4 +91,4 @@ export const memoryGameToggleDemonstration = () => {
   return {
     type: MEMORY_GAME_TOGGLE_DEMONSTRATION
   }
-}
+};
