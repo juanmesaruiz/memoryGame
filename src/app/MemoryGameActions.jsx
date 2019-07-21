@@ -25,10 +25,9 @@ const MemoryGameActions = props => {
 
   return (
     <>
-      <button onClick={handleStartGame} disabled={gameRunning}>
-        Start game
-      </button>
+      <button onClick={handleStartGame} disabled={gameRunning}>Start game</button>
       <select
+        aria-label="memoryGame-action-select"
         value={gameCards}
         onChange={handleSelectGameCards}
         disabled={gameRunning}

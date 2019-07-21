@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MemoryGame test suite Snapshot matchs 1`] = `
+<div>
+  <article
+    class="memoryGame"
+  >
+    <section
+      class="memoryGame-cards"
+    >
+      <code
+        name="MemoryGameCard"
+        props="[object Object]"
+      />
+      <code
+        name="MemoryGameCard"
+        props="[object Object]"
+      />
+      <code
+        name="MemoryGameCard"
+        props="[object Object]"
+      />
+      <code
+        name="MemoryGameCard"
+        props="[object Object]"
+      />
+    </section>
+    <section
+      class="memoryGame-action"
+    >
+      <button>
+        Start game
+      </button>
+      <select
+        aria-label="memoryGame-action-select"
+      >
+        <option>
+          2
+        </option>
+        <option>
+          3
+        </option>
+        <option>
+          4
+        </option>
+        <option>
+          5
+        </option>
+        <option>
+          6
+        </option>
+      </select>
+      <span>
+        Best score: 
+      </span>
+      <span>
+        Level: 
+        2
+      </span>
+    </section>
+  </article>
+</div>
+`;

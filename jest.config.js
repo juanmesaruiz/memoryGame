@@ -10,4 +10,7 @@ module.exports = {
     window: {},
     document: {},
   },
+  moduleNameMapper: {
+    "\\.(css|scss)$": "<rootDir>/jestConfig/cssTransform.js"
+  }
 };
