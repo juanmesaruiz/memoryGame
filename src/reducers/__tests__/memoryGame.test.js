@@ -29,13 +29,16 @@ describe('memoryGame reducer', () => {
   }
 
   const getRandomMockValue = 2
+  const jsdomAlert = window.alert
 
   beforeEach(() => {
     getRandom.mockReturnValue(getRandomMockValue)
+    window.alert = () => {}
   })
 
   afterEach(() => {
     jest.clearAllMocks()
+    window.alert = jsdomAlert
   })
 
   it('case with default', () => {
