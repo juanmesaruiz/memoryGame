@@ -61,7 +61,8 @@ export default function (state = defaultState, action) {
         ...defaultState,
         bestScore: newState.bestScore,
         gameCards: newState.gameCards,
-        hsCardsData: newState.hsCardsData
+        hsCardsData: newState.hsCardsData,
+        isGoldMode: newState.isGoldMode
       }
     }
 

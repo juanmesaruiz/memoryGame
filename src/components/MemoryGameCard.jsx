@@ -31,7 +31,7 @@ const MemoryGameCard = props => {
   const thisCardData = hsCardsData.find(hsCard => hsCard.cardId === idHsCard)
 
   useEffect(() => {
-    if (!hsCardsData.find(hsCard => hsCard.cardId === idHsCard)) {
+    if (!thisCardData) {
       memoryGameFetchCard(idHsCard)
     }
   }, [idHsCard])

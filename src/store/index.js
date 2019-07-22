@@ -4,8 +4,11 @@ import thunk from 'redux-thunk'
 
 const configureStore = () => {
   const initialState = {}
+  const enhancers = []
   const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__
-  const enhancers = [devToolsExtension()]
+  if (typeof devToolsExtension === 'function') {
+    enhancers.push(devToolsExtension())
+  }
 
   const composedEnhancers = compose(
     applyMiddleware(thunk),

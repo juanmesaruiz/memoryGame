@@ -31,9 +31,7 @@ const MemoryGame = props => {
     memoryGameToggleDemonstration
   } = props
 
-  const finnishDemonstration = () => {
-    memoryGameToggleDemonstration()
-  }
+  const finnishDemonstration = () => memoryGameToggleDemonstration()
 
   useEffect(() => {
     if (isGameDemonstration) {
@@ -58,7 +56,7 @@ const MemoryGame = props => {
   const actualCards = arrayHSCards.slice(0, gameCards)
 
   return (
-    <article className='memoryGame'>
+    <div className='memoryGame'>
       <section className='memoryGame-cards'>
         {actualCards.map((element, i) => (
           <MemoryGameCard
@@ -69,11 +67,11 @@ const MemoryGame = props => {
           />
         ))}
       </section>
-      <section className='memoryGame-action'>
+      <aside className='memoryGame-action'>
         <MemoryGameActions />
         <MemoryGameScore />
-      </section>
-    </article>
+      </aside>
+    </div>
   )
 }
 

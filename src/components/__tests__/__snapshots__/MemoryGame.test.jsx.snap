@@ -2,7 +2,7 @@
 
 exports[`MemoryGame test suite Snapshot matchs 1`] = `
 <div>
-  <article
+  <div
     class="memoryGame"
   >
     <section
@@ -25,7 +25,7 @@ exports[`MemoryGame test suite Snapshot matchs 1`] = `
         props="[object Object]"
       />
     </section>
-    <section
+    <aside
       class="memoryGame-action"
     >
       <button
@@ -83,7 +83,7 @@ exports[`MemoryGame test suite Snapshot matchs 1`] = `
           <b />
         </p>
       </div>
-    </section>
-  </article>
+    </aside>
+  </div>
 </div>
 `;
