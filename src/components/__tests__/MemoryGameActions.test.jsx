@@ -5,7 +5,8 @@ import { Provider } from 'react-redux'
 
 import {
   getMemoryGameIsGameRunning,
-  getMemoryGameGameCards
+  getMemoryGameGameCards,
+  getMemoryGameCpuCardSequence
 } from '../../reducers'
 
 import {
@@ -49,6 +50,7 @@ describe('MemoryGameAction test suite', () => {
   beforeEach(() => {
     getMemoryGameGameCards.mockReturnValue(mockReturnGameCards)
     getMemoryGameIsGameRunning.mockReturnValue(false)
+    getMemoryGameCpuCardSequence.mockReturnValue([])
     memoryGameSetGameCards.mockReturnValue({
       type: 'memoryGameSetGameCards'
     })

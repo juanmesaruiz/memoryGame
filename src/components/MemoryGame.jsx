@@ -14,7 +14,6 @@ import {
 
 import MemoryGameActions from './MemoryGameActions'
 import MemoryGameCard from './MemoryGameCard'
-import MemoryGameScore from './MemoryGameScore'
 
 import { arrayHSCards } from '../config/constants'
 
@@ -57,6 +56,9 @@ const MemoryGame = props => {
 
   return (
     <div className='memoryGame'>
+      <aside className='memoryGame-action'>
+        <MemoryGameActions />
+      </aside>
       <section className='memoryGame-cards'>
         {actualCards.map((element, i) => (
           <MemoryGameCard
@@ -67,10 +69,6 @@ const MemoryGame = props => {
           />
         ))}
       </section>
-      <aside className='memoryGame-action'>
-        <MemoryGameActions />
-        <MemoryGameScore />
-      </aside>
     </div>
   )
 }

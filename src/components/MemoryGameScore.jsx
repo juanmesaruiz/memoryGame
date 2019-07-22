@@ -11,10 +11,10 @@ const MemoryGameScore = props => {
 
   return (
     <div className='memoryGame-score'>
-      <p>Level: {cpuCardSequence.length}</p>
-      <p>
+      <span>Level: {cpuCardSequence.length}</span>
+      <span>
         Best score: <b>{bestScore}</b>
-      </p>
+      </span>
     </div>
   )
 }

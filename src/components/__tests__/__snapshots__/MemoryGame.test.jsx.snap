@@ -5,35 +5,12 @@ exports[`MemoryGame test suite Snapshot matchs 1`] = `
   <div
     class="memoryGame"
   >
-    <section
-      class="memoryGame-cards"
-    >
-      <code
-        name="MemoryGameCard"
-        props="[object Object]"
-      />
-      <code
-        name="MemoryGameCard"
-        props="[object Object]"
-      />
-      <code
-        name="MemoryGameCard"
-        props="[object Object]"
-      />
-      <code
-        name="MemoryGameCard"
-        props="[object Object]"
-      />
-    </section>
     <aside
       class="memoryGame-action"
     >
-      <button
-        class="memoryGame-action-startButton"
+      <div
+        class="memoryGame-action-select-container"
       >
-        Start game
-      </button>
-      <div>
         <label>
           Number of cards:
         </label>
@@ -74,16 +51,43 @@ exports[`MemoryGame test suite Snapshot matchs 1`] = `
       <div
         class="memoryGame-score"
       >
-        <p>
+        <span>
           Level: 
           2
-        </p>
-        <p>
+        </span>
+        <span>
           Best score: 
           <b />
-        </p>
+        </span>
+      </div>
+      <div>
+        <button
+          class="memoryGame-action-startButton"
+        >
+          Start game
+        </button>
       </div>
     </aside>
+    <section
+      class="memoryGame-cards"
+    >
+      <code
+        name="MemoryGameCard"
+        props="[object Object]"
+      />
+      <code
+        name="MemoryGameCard"
+        props="[object Object]"
+      />
+      <code
+        name="MemoryGameCard"
+        props="[object Object]"
+      />
+      <code
+        name="MemoryGameCard"
+        props="[object Object]"
+      />
+    </section>
   </div>
 </div>
 `;

@@ -11,6 +11,8 @@ import {
   getMemoryGameGameCards
 } from '../reducers'
 
+import MemoryGameScore from './MemoryGameScore'
+
 import { defaultSelectValues } from '../config/constants'
 
 const MemoryGameActions = props => {
@@ -28,14 +30,7 @@ const MemoryGameActions = props => {
 
   return (
     <>
-      <button
-        className='memoryGame-action-startButton'
-        onClick={handleStartGame}
-        disabled={isGameRunning}
-      >
-        Start game
-      </button>
-      <div>
+      <div className='memoryGame-action-select-container'>
         <label>Number of cards:</label>
         <select
           className='memoryGame-action-select'
@@ -55,6 +50,16 @@ const MemoryGameActions = props => {
           onClick={handleGoldCheckBox}
         >
           Gold Mode
+        </button>
+      </div>
+      <MemoryGameScore />
+      <div>
+        <button
+          className='memoryGame-action-startButton'
+          onClick={handleStartGame}
+          disabled={isGameRunning}
+        >
+          Start game
         </button>
       </div>
     </>
