@@ -1,5 +1,4 @@
 export const minNumberRandom = 1
-export const defaultSelectValues = [2, 3, 4, 5, 6, 7, 8]
 export const arrayHSCards = [
   { idHsCard: 'EX1_116' },
   { idHsCard: 'KAR_009' },

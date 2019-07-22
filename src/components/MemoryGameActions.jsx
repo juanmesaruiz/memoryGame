@@ -13,7 +13,7 @@ import {
 
 import MemoryGameScore from './MemoryGameScore'
 
-import { defaultSelectValues } from '../config/constants'
+import { arrayHSCards } from '../config/constants'
 
 const MemoryGameActions = props => {
   const {
@@ -28,6 +28,11 @@ const MemoryGameActions = props => {
   const handleSelectGameCards = e => memoryGameSetGameCards(e.target.value)
   const handleStartGame = () => memoryGameStartGame()
 
+  const returnOptionsForSelect = () => {
+    const optionsArray = new Array(arrayHSCards.length - 1).fill(0)
+    return optionsArray.map((val, i) => <option key={i + 2}>{i + 2}</option>)
+  }
+
   return (
     <>
       <div className='memoryGame-action-select-container'>
@@ -39,9 +44,7 @@ const MemoryGameActions = props => {
           onChange={handleSelectGameCards}
           disabled={isGameRunning}
         >
-          {defaultSelectValues.map(val => (
-            <option key={val}>{val}</option>
-          ))}
+          {returnOptionsForSelect()}
         </select>
       </div>
       <div>
