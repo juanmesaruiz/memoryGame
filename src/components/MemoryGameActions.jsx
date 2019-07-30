@@ -29,7 +29,8 @@ const MemoryGameActions = props => {
   const handleStartGame = () => memoryGameStartGame()
 
   const returnOptionsForSelect = () => {
-    const optionsArray = new Array(arrayHSCards.length - 1).fill(0)
+    const optionsArray = arrayHSCards
+    optionsArray.pop()
     return optionsArray.map((val, i) => <option key={i + 2}>{i + 2}</option>)
   }
 

@@ -9,6 +9,8 @@ import {
   MEMORY_GAME_TOGGLE_DEMONSTRATION,
   MEMORY_GAME_TOGGLE_GOLD_MODE
 } from '../actions/actionTypes'
+
+import { alertUserError } from '../helpers/alertHelper'
 import { getRandom } from '../helpers/randomHelper'
 
 const defaultState = {
@@ -53,9 +55,7 @@ export default function (state = defaultState, action) {
         return newState
       }
 
-      alert(
-        `Ohh! :( You failed! Try it again and beat your best score! (${newState.bestScore})`
-      )
+      alertUserError(newState.bestScore)
 
       return {
         ...defaultState,
